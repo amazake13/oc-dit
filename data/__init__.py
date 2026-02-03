@@ -9,6 +9,7 @@ from data.transforms import (
     apply_color_jitter,
 )
 from data.gso_dataset import GSODataset, GSOSegmentationDataset
+from data.objaverse_dataset import ObjaverseDataset
 
 __all__ = [
     "BaseSegmentationDataset",
@@ -21,4 +22,5 @@ __all__ = [
     "apply_color_jitter",
     "GSODataset",
     "GSOSegmentationDataset",
+    "ObjaverseDataset",
 ]
