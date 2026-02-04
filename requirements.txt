@@ -3,3 +3,4 @@ einops
 timm
 ruff
 huggingface_hub
+pyyaml

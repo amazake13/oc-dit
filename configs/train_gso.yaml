@@ -1,0 +1,49 @@
+# GSO Dataset Training Configuration
+# For production training on cloud GPUs
+
+model:
+  image_size: [480, 640]
+  template_size: [128, 128]
+  embed_dim: 1024
+  depth: 24
+  num_heads: 16
+
+data:
+  dataset: gso
+  data_root: data/gso
+  batch_size: 8  # Per GPU
+  num_workers: 8
+  max_classes: 8
+  max_templates: 12
+
+training:
+  max_steps: 400000
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  betas: [0.9, 0.999]
+  warmup_steps: 1000
+  gradient_clip_norm: 1.0
+  log_interval: 100
+  save_interval: 5000
+  eval_interval: 5000
+
+ema:
+  enabled: true
+  decay: 0.9999
+
+device: cuda
+mixed_precision: true
+seed: 42
+
+# Distributed training
+distributed: true
+
+# Checkpoint
+checkpoint_dir: checkpoints/gso
+resume_from: null
+
+# Logging
+wandb:
+  enabled: true
+  project: oc-dit
+  name: gso_training
